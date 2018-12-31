@@ -1,0 +1,8 @@
+<ul>
+<%= form_for @post do |f| %>
+<li><%= f.label :content %>
+<%= f.text_field :content %></li>
+<li><%= f.collection_select :user_id, @users, :id, :name %></li>
+<%= f.submit %>
+<% end %>
+</ul>
