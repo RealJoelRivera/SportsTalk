@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate, only: [:index, :show, :new, :edit]
+
   def index
     @posts = Post.all
   end
@@ -11,13 +13,17 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @users = User.all
+    @sports = Sport.all
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to (@post.user)
-    else render :new
+      redirect_to "/posts"
+    else
+      @users = User.all
+      @sports = Sport.all
+      render :new
     end
   end
 
@@ -35,7 +41,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:content, :user_id)
+      params.require(:post).permit(:content, :user_id, :sport_id)
     end
 
 end

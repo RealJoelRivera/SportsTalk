@@ -11,9 +11,6 @@
 
   <body>
     <header>
-      <% if @logged_in_user %>
-        <%= @logged_in_user.name %>
-      <% end %>
       <% if @errors %>
         <ul>
           <% @errors.each do |error| %>

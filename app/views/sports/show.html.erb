@@ -1,4 +1,8 @@
 <h2><%= link_to @sport.name, "/sports" %></h2>
 <ul>
-  <li> <%= @sport.posts %> </li>
+  <% @sport.posts.each do |post| %>
+    <li> <%= post.content %> </li>
+    <li> <%= post.user.name %> </li>
+    <% end %>
 </ul>
+<%= link_to "Create Post", "/posts/new" %>

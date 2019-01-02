@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :sports
-  resources :sessions
+  resources :sessions, only: [:index, :new, :create]
+
+  root "users#new", as: "home"
+
+  post "/logout", to: "sessions#destroy", as: "logout"
 end

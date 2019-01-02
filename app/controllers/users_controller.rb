@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @isMe = session[:user_id] == @user.id
+     # if session[:user_id] != @user.id
+       # redirect_to home_path
+    #@user_posts = Post.find(params[:id]) # If i want to show every post for a given user, do I need to have a second private param in this controller page or should it be in the application controller?
+    # end
   end
 
   def new

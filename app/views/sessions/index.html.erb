@@ -1,7 +1,12 @@
+<h2>User Login</h2>
 <%= form_with url: sessions_path, local: true do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<br>
 <%= f.label :password %>
 <%= f.password_field :password %>
+<br>
 <%= f.submit "Login"%>
 <% end %>
+
+<h3><%= link_to "Create a User", "/users/new" %></h3>

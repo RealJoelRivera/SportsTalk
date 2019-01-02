@@ -14,4 +14,12 @@ private
     end
   end
 
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def authenticate
+    redirect_to "/users/new" unless logged_in?
+  end
+
 end
