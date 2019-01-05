@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:name])
-    if @user && @user.authenticate(params[:password])
+    if @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   #   if reset_session
   #     redirect_to home_path
   #   end
-    redirect_to home_path 
+    redirect_to home_path
    end
 
 end

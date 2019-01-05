@@ -1,12 +1,14 @@
+<div class="show-user">
+
 <ul>
 <li> <h2> <%= link_to @user.name, "/users" %> </h2> </li>
 <li> <%= @user.bio %> </li>
-<!-- this is where I want an iteration of every post previously written by the user -->
 </ul>
-<% if @isMe %>
+<% if is_me?(@user) %>
 <%= button_to "Sign Out", logout_path, method: "POST" %>
 <br>
 <%= button_to "Edit #{@user.name}", edit_user_path(@user), method: "get" %>
 
 <% end %>
 <h3><%= link_to "See Sports", "/sports" %></h3>
+</div>

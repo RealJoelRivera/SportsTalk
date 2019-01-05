@@ -12,12 +12,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @users = User.all
     @sports = Sport.all
   end
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = session[:user_id]
     if @post.save
       redirect_to "/posts"
     else
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @sports = Sport.all
   end
 
   def update
@@ -39,9 +40,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
+
   private
     def post_params
-      params.require(:post).permit(:content, :user_id, :sport_id)
+      params.require(:post).permit(:content, :sport_id, :user_id)
     end
 
 end

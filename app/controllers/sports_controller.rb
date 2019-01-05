@@ -6,6 +6,11 @@ class SportsController < ApplicationController
 
   def show
     @sport = Sport.find(params[:id])
+    @comment = Comment.new
+  end
+
+  def edit
+    redirect_to edit_post_path
   end
 
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :sports
+  resources :comments, only: [:index, :new, :create]
   resources :sessions, only: [:index, :new, :create]
 
   root "users#new", as: "home"

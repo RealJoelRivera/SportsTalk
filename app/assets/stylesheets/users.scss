@@ -1,3 +1,52 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// this is for a new user page
+.new-user {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  font-size: 32px;
+  color: navy;
+  padding: 20px 10px 20px 10px;
+  border: 3px solid white;
+  border-radius: 50px 50px 50px 50px;
+}
+
+
+// this is the edit and new form for my users
+.users-form {
+  color: navy;
+  background: none;
+	font-size: 24px;
+}
+
+
+// users show page
+.show-user {
+  align-items: center;
+}
+
+
+// users index page
+.users-li {
+  color: white;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+a:visited {
+  color: white;
+}
+
+li {
+ color: white;
+ text-decoration: none;
+}

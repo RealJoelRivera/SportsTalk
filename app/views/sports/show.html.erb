@@ -1,8 +1,27 @@
-<h2><%= link_to @sport.name, "/sports" %></h2>
+<div class="sport-posts">
+<h2 class="sport-name"><%= link_to @sport.name, "/sports" %></h2>
 <ul>
   <% @sport.posts.each do |post| %>
-    <li> <%= post.content %> </li>
-    <li> <%= post.user.name %> </li>
+    <li> <%= link_to post.content, user_path(post.user) %>
+      <br>
+    <%= link_to post.user.name, user_path(post.user) %> </li>
+    <% post.comments.each do |comment|%>
+      <%= comment.content %>
+      <br>
     <% end %>
+    <%= form_for @comment do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :post_id, :value => post.id %>
+      <%= f.hidden_field :user_id, :value => post.user.id %>
+      <br>
+      <%= f.submit "Comment" %>
+    <% end %>
+    <% if is_me?(post.user) %>
+    <%= button_to "Edit Post", edit_post_path(post.id), method: "get" %>
+    <% end %>
+  <% end %>
 </ul>
+
 <%= link_to "Create Post", "/posts/new" %>
+</div>
